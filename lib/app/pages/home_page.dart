@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:marca_pagina_app/app/controller/livro_controller.dart';
 import 'package:marca_pagina_app/app/repository/livro_repository.dart';
 
@@ -9,6 +10,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var livroController = GetIt.I.get<LivroController>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Marcador de Páginas'),
@@ -35,11 +38,7 @@ class HomePage extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ListTile(
-                            leading: Icon(
-                              Icons.bookmark,
-                              color: Color.fromARGB(202, 255, 255, 255),
-                              size: 35,
-                            ),
+                            leading: Image.network('${livro.urlImagem}'),
                             title: Text(
                               '${livro.nome}',
                               style: TextStyle(
@@ -64,7 +63,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (() => LivroController().inserirNovosLivros()),
+        onPressed: (() => livroController.novoCadastro(context)),
         backgroundColor: Color(0xff161b22),
         child: const Icon(Icons.add),
       ),

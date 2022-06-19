@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marca_pagina_app/app/pages/home_page.dart';
+import 'package:marca_pagina_app/app/pages/livro_form_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => HomePage(),
+        'livro-form-page': ((context) => LivroFormPage()),
       },
     );
   }

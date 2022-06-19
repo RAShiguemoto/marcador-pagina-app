@@ -3,6 +3,7 @@ final createTableLivro = '''
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     nome VARCHAR(255),
     capitulo VARCHAR(255),
-    pagina VARCHAR(5)
+    pagina VARCHAR(5),
+    url_imagem VARCHAR(255)
   )
 ''';

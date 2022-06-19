@@ -20,6 +20,7 @@ class LivroRepository {
         livro.nome = linha['nome'];
         livro.capitulo = linha['capitulo'];
         livro.pagina = linha['pagina'];
+        livro.urlImagem = linha['url_imagem'];
         return livro;
       });
 
@@ -52,13 +53,20 @@ class LivroRepository {
     if (_db != null) {
       var sql;
       if (livro.id == null) {
-        sql = 'INSERT INTO livro(nome, capitulo, pagina) VALUES (?,?,?)';
-        _db!.rawInsert(sql, [livro.nome, livro.capitulo, livro.pagina]);
+        sql =
+            'INSERT INTO livro(nome, capitulo, pagina, url_imagem) VALUES (?,?,?,?)';
+        _db!.rawInsert(
+            sql, [livro.nome, livro.capitulo, livro.pagina, livro.urlImagem]);
       } else {
         sql =
-            'UPDATE livro SET nome = ?, capitulo = ?, pagina = ? WHERE id = ?';
-        _db!.rawUpdate(
-            sql, [livro.nome, livro.capitulo, livro.pagina, livro.id]);
+            'UPDATE livro SET nome = ?, capitulo = ?, pagina = ?, url_imagem = ? WHERE id = ?';
+        _db!.rawUpdate(sql, [
+          livro.nome,
+          livro.capitulo,
+          livro.pagina,
+          livro.urlImagem,
+          livro.id
+        ]);
       }
     }
   }
